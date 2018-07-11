@@ -1,0 +1,25 @@
+{% assign nowTimestamp = 'now' | date: '%s' %}
+
+{% assign oneWeekAgo = nowTimestamp | minus: 604800 | date: '%s' %}
+
+{% assign rainTotal7 = 0.00 %}
+
+{% for days in site.data.2018 %}
+
+{% assign rainDate = days.date | date: '%s' %}
+
+{% if rainDate >= oneWeekAgo and rainDate <= nowTimestamp %}
+
+{% assign dayRain = days.rain %}
+
+{% assign rainTotal7 = rainTotal7 | plus: days.rain | round: 5 %}
+
+{% endif %}
+
+{% endfor %}
+
+<p>7-Day Total: {{ rainTotal7 }} inches</p>
+
+{% if rainTotal7 < 1.5 %}
+<p><strong>You need to water the yard</strong></p>
+{% endif %}
