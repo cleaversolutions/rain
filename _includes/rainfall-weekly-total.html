@@ -1,0 +1,37 @@
+{% assign nowTimestamp = 'now' | date: '%s' %}
+
+{% assign oneWeekAgo = nowTimestamp | minus: 604800 | date: '%s' %}
+{% assign twoWeeksAgo = nowTimestamp | minus: 1209600 | date: '%s' %}
+{% assign threeWeeksAgo = nowTimestamp | minus: 1814400 | date: '%s' %}
+{% assign fourWeeksAgo = nowTimestamp | minus: 2419200 | date: '%s' %}
+
+
+{% assign rainTotal7 = 0.00 %}
+{% assign rainTotal14 = 0.00 %}
+{% assign rainTotal21 = 0.00 %}
+{% assign rainTotal28 = 0.00 %}
+
+{% for days in site.data.2018 %}
+
+{% assign rainDate = days.date | date: '%s' %}
+
+{% if rainDate >= oneWeekAgo and rainDate <= nowTimestamp %}
+{% assign dayRain = days.rain %}
+{% assign rainTotal7 = rainTotal7 | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate >= twoWeeksAgo and rainDate <= oneWeekAgo %}
+{% assign dayRain = days.rain %}
+{% assign rainTotal14 = rainTotal14 | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate >= threeWeeksAgo and rainDate <= twoWeeksAgo %}
+{% assign dayRain = days.rain %}
+{% assign rainTotal21 = rainTotal21 | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate >= fourWeeksAgo and rainDate <= threeWeeksAgo %}
+{% assign dayRain = days.rain %}
+{% assign rainTotal28 = rainTotal28 | plus: days.rain | round: 5 %}
+{% endif %}
+{% endfor %}

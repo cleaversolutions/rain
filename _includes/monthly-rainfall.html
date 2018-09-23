@@ -1,0 +1,26 @@
+<canvas id="myChartMonthly" width="400" height="400"></canvas>
+<script>
+var ctx = document.getElementById("myChartMonthly").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        datasets: [{
+            label: 'Monthly Rainfall (inches)',
+            data: [{{ jan }}, {{ feb }}, {{ mar }}, {{ april }}, {{ may }}, {{ jun }}, {{ jul }}, {{ aug }}, {{ sep }}, {{ oct }}, {{ nov }}, {{ dec }}, ],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>

@@ -1,0 +1,74 @@
+{% assign nowTimestamp = 'now' | date: '%s' %}
+
+{% assign oneWeekAgo = nowTimestamp | minus: 604800 | date: '%s' %}
+{% assign twoWeeksAgo = nowTimestamp | minus: 1209600 | date: '%s' %}
+{% assign threeWeeksAgo = nowTimestamp | minus: 1814400 | date: '%s' %}
+{% assign fourWeeksAgo = nowTimestamp | minus: 2419200 | date: '%s' %}
+
+
+{% assign jan = 0.00 %}
+{% assign feb = 0.00 %}
+{% assign mar = 0.00 %}
+{% assign april = 0.00 %}
+{% assign may = 0.00 %}
+{% assign jun = 0.00 %}
+{% assign jul = 0.00 %}
+{% assign aug = 0.00 %}
+{% assign sep = 0.00 %}
+{% assign oct = 0.00 %}
+{% assign nov = 0.00 %}
+{% assign dec = 0.00 %}
+
+{% for days in site.data.2018 %}
+
+{% assign rainDate = days.date | date: '%m' %}
+
+{% if rainDate == '01' %}
+{% assign jan = jan | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '02' %}
+{% assign feb = feb | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '03' %}
+{% assign mar = mar | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '04' %}
+{% assign april = april | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '05' %}
+{% assign may = may | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '06' %}
+{% assign jun = jun | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '07' %}
+{% assign jul = jul | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '08' %}
+{% assign aug = aug | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '09' %}
+{% assign sep = sep | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '10' %}
+{% assign oct = oct | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '11' %}
+{% assign nov = nov | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% if rainDate == '12' %}
+{% assign dec = dec | plus: days.rain | round: 5 %}
+{% endif %}
+
+{% endfor %}
