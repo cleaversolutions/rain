@@ -1,6 +1,6 @@
 {% assign nowTimestamp = 'now' | date: '%s' %}
 
-{% assign oneWeekAgo = nowTimestamp | minus: 604800 | date: '%s' %}
+{% assign thisWeek = nowTimestamp | minus: 604800 | date: '%s' %}
 {% for days in site.data.2018 %}
 {% assign rainDate = days.date | date: '%s' %}
 {% if rainDate >= oneWeekAgo and rainDate <= nowTimestamp %}
